@@ -16,13 +16,15 @@ const hashtags = [
     'fashion'
 ];
 
+const TIMEOUT = 60000; // 1 minute
+
 build(async() => {
     d('Fetching new tweets');
     const tweets = await Promise.all(hashtags.map(fetchTweets));
 
     context.tweets = tweets.reduce((a, b) => [...a, ...b], []);
     d(`Got ${context.tweets.length} tweets`);
-}, 10000);
+}, TIMEOUT);
 
 app.use(express.static('dist'));
 app.use('/api/tweets', async(req, res) => {
@@ -33,3 +35,7 @@ app.use('/api/tweets', async(req, res) => {
 });
 
 app.listen(process.env.PORT, () => console.log(`Listening on ${process.env.PORT}`));
+
+process.on('unhandledRejection', err => {
+    console.error('err', err);
+});
