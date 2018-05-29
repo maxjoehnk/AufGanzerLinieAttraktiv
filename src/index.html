@@ -4,17 +4,20 @@
         <link rel="stylesheet" href="styles.scss">
     </head>
     <body>
-        <h1>Twitter Beautycloud</h1>
-
+        <div class="grils">
+            <a href="#" id="jolie">Angelina Jolie</a>
+            <a href="#" id="scarlet">Scarlet Johansson</a>
+        </div>
         <canvas></canvas>
-
-        <p>
-            Tweet <b>#beauty</b>
-        </p>
-
-        <div class="tweet">
-
+        <div class="interactions">
+            <a href="https://twitter.com/intent/tweet?button_hashtag=beauty&ref_src=twsrc%5Etfw"
+               class="twitter-hashtag-button"
+               data-show-count="false">
+               Tweet #LoveTwitter
+            </a>
+            <button>Refresh</button>
         </div>
         <script src="index.js"></script>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </body>
 </html>

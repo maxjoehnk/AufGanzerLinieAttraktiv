@@ -7,11 +7,6 @@ export const RETWEET_UPPER_BOUND = 1000;
 export const MIN_WEIGHT = 10;
 export const MAX_WEIGHT = 30;
 
-export const ALIASING_THRESHOLD = 200;
-
-export const BACKGROUND_OPACITY = 0;
-export const BACKGROUND_COLOR = WHITE;
-
 export const FONT_WEIGHT = 'bold';
 
 export const FONT_FAMILY = 'Roboto';

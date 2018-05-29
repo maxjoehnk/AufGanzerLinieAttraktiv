@@ -1,6 +1,7 @@
-import { render, rerender } from './renderer';
+import { renderWebGl } from './webgl-renderer';
 
-const IMAGE_URL = require('../assets/jolie.png');
+const JOLIE_URL = require('../assets/jolie.png');
+const SCARLET_URL = require('../assets/johannsonborder.png');
 
 async function fetchTweets() {
     const res = await fetch('/api/tweets');
@@ -21,29 +22,61 @@ function onOpenTweet(event) {
 }
 
 async function setup() {
-    const tweets = await fetchTweets();
-    const img = await fetchImage(IMAGE_URL);
-    const instance = await render(img, tweets);
-    const canvas = document.querySelector('canvas');
-    canvas.width = instance.canvas.width;
-    canvas.height = instance.canvas.height;
-    const context = canvas.getContext('2d');
-    context.putImageData(instance.final, 0, 0);
+    const jolie = await fetchImage(JOLIE_URL);
+    const renderJolie = render(jolie);
+    const refreshBtn = document.querySelector('button');
+    refreshBtn.addEventListener('click', renderJolie);
 
-    while (true) {
-        await timeout(10000);
+    await renderJolie();
+    
+    document.querySelector('.interactions').classList.add('show');
+    document.querySelector('.grils').classList.add('show');
+
+    const jolieBtn = document.querySelector('#jolie');
+    const scarletBtn = document.querySelector('#scarlet');
+
+    const scarlet = await fetchImage(SCARLET_URL);
+    const renderScarlet = render(scarlet);
+
+    const enable = () => {
+        refreshBtn.removeAttribute('disabled');
+        scarletBtn.removeAttribute('disabled');
+        jolieBtn.removeAttribute('disabled');
+    };
+
+    const disable = () => {
+        refreshBtn.setAttribute('disabled', '');
+        scarletBtn.setAttribute('disabled', '');
+        jolieBtn.setAttribute('disabled', '');
+    };
+
+    jolieBtn.addEventListener('click', async() => {
+        refreshBtn.addEventListener('click', renderJolie);
+        refreshBtn.removeEventListener('click', renderScarlet);
+        disable();
         try {
-            const tweets = await fetchTweets();
-            const final = await rerender(instance, tweets);
-            context.putImageData(final, 0, 0);
-            console.log('rendered');
-        }catch(err) {
-            console.error(err);
-        }
-    }
+            await renderJolie();
+        }catch(e) {}
+        enable();
+    });
+
+    scarletBtn.addEventListener('click', async() => {
+        refreshBtn.addEventListener('click', renderScarlet);
+        refreshBtn.removeEventListener('click', renderJolie);
+        disable();
+        try {
+            await renderScarlet();
+        }catch(e) {}
+        enable();
+    });
 }
 
-const timeout = time => new Promise(resolve => setTimeout(resolve, time));
+function render(img) {
+    return async() => {
+        const tweets = await fetchTweets();
+        const final = await renderWebGl(img, tweets);
+    };
+}
 
 setup()
     .catch(err => console.error(err))
