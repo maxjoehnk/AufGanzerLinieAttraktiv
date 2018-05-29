@@ -1,0 +1,24 @@
+{
+  "name": "twitter-wordcloud",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "watch": "parcel watch src/index.html"
+  },
+  "devDependencies": {
+    "node-sass": "^4.9.0",
+    "parcel": "^1.8.1"
+  },
+  "dependencies": {
+    "debug": "^3.1.0",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "twitter": "^1.7.1",
+    "wordcloud": "^1.1.0"
+  },
+  "browserslist": [
+    "last 1 Chrome versions",
+    "last 1 Firefox versions"
+  ]
+}
