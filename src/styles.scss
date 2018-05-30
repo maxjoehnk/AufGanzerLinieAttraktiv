@@ -1,3 +1,29 @@
+$gril-color: (
+    active: rgba(0, 0, 0, 1),
+    base: rgba(0, 0, 0, 0.6),
+    hover: rgba(0, 0, 0, 0.7),
+    disabled: rgba(0, 0, 0, 0.3)
+);
+
+@mixin gril-color($state) {
+    $color: map-get($gril-color, $state);
+    color: $color;
+    border-bottom-color: $color;
+}
+
+@mixin fade-container($duration) {
+    opacity: 0;
+    transition: opacity $duration ease-in-out;
+
+    &.show {
+        opacity: 1;
+    }
+}
+
+* {
+    font-family: Roboto, 'sans-serif';
+}
+
 body {
     margin: 0;
     width: 100vw;
@@ -8,85 +34,68 @@ body {
     justify-content: flex-start;
 }
 
-* {
-    font-family: Roboto, 'sans-serif';
-}
-
-$color: rgba(0, 0, 0, 0.8);
-$hover: rgba(0, 0, 0, 0.6);
-
-.grils {
-    display: flex;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    margin-bottom: 16px;
-    height: 46px;
-
-    &.show {
-        opacity: 1;
-    }
-
-    a {
-        display: block;
-        color: $color;
-        margin: 4px;
-        text-decoration: none;
-        border-bottom: 3px solid $color;
-        padding: 8px 4px;
-        cursor: pointer;
-
-        &[disabled] {
-            pointer-events: none;
-        }
-
-        &:not([disabled]):hover {
-            color: $hover;
-            border-bottom-color: $hover;
-        }
-    }
-}
-
 canvas {
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
+    @include fade-container(2s);
     height: calc(100vh - 112px);
+}
 
-    &.show {
-        opacity: 1;
+button {
+    transition: all 0.3s ease-in-out;
+    background: none;
+    border: none;
+    font-size: 12px;
+    cursor: pointer;
+
+    &[disabled],
+    &.active {
+        pointer-events: none;
     }
 }
 
+.grils,
 .interactions {
-    opacity: 0;
-    transition: opacity 0.5s linear;
+    @include fade-container(0.5s);
     display: flex;
     flex-direction: row;
     align-items: center;
     height: 46px;
+}
 
+.grils {
+    margin-bottom: 16px;
+
+    button {
+        @include gril-color('base');
+        margin: 4px;
+        border-bottom: 3px solid;
+        padding: 8px 4px;
+
+        &[disabled] {
+            @include gril-color('disabled');
+        }
+
+        &.active {
+            @include gril-color('active');
+        }
+
+        &:not([disabled]):hover {
+            @include gril-color('hover');
+        }
+    }
+}
+
+.interactions {
     * {
         margin: 16px 8px;
     }
 
     button {
-        border: none;
-        background: none;
         border-radius: 2px;
-        font-size: 12px;
         height: 20px;
         background: #e0e0e0;
-        cursor: pointer;
-
-        &[disabled] {
-            pointer-events: none;
-        }
 
         &:not([disabled]):hover {
             background: #d0d0d0;
         }
-    }
-
-    &.show {
-        opacity: 1;
     }
 }
