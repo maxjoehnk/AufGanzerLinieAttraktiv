@@ -6,7 +6,7 @@
     "start": "node main.js",
     "watch": "parcel watch src/index.html",
     "build": "parcel build src/index.html --no-source-maps",
-    "deploy": "now -e TWITTER_CONSUMER_KEY=@consumer-key -e TWITTER_CONSUMER_SECRET=@consumer-secret -e TWITTER_APPLICATION_TOKEN=@bearer-token"
+    "deploy": "now --public -e TWITTER_CONSUMER_KEY=@consumer-key -e TWITTER_CONSUMER_SECRET=@consumer-secret -e TWITTER_APPLICATION_TOKEN=@bearer-token"
   },
   "devDependencies": {
     "glslify-bundle": "^5.0.0",
