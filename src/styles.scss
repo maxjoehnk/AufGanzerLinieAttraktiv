@@ -20,6 +20,7 @@ $hover: rgba(0, 0, 0, 0.6);
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
     margin-bottom: 16px;
+    height: 46px;
 
     &.show {
         opacity: 1;
@@ -32,7 +33,7 @@ $hover: rgba(0, 0, 0, 0.6);
         text-decoration: none;
         border-bottom: 3px solid $color;
         padding: 8px 4px;
-        pointer: cursor;
+        cursor: pointer;
 
         &[disabled] {
             pointer-events: none;
@@ -48,6 +49,7 @@ $hover: rgba(0, 0, 0, 0.6);
 canvas {
     opacity: 0;
     transition: opacity 2s ease-in-out;
+    height: calc(100vh - 112px);
 
     &.show {
         opacity: 1;
@@ -60,6 +62,7 @@ canvas {
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: 46px;
 
     * {
         margin: 16px 8px;
