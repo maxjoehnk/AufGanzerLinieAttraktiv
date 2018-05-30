@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const { createServer } = require('http');
 const { fetchTweets } = require('./twitter');
 const { build } = require('./service-builder');
 const d = require('debug')('twitter-beautycloud');
@@ -34,7 +35,11 @@ app.use('/api/tweets', async(req, res) => {
     res.end();
 });
 
-app.listen(process.env.PORT, () => console.log(`Listening on ${process.env.PORT}`));
+const server = createServer(app);
+server.listen(process.env.PORT, () => {
+    const { address, port } = server.address();
+    console.log(`Listening on ${address}:${port}`)
+});
 
 process.on('unhandledRejection', err => {
     console.error('err', err);
