@@ -59,10 +59,7 @@ async function setup() {
         enable(refreshBtn);
     };
 
-    const refresh = () => {
-        selectedIndex = Math.floor(Math.random() * grils.length);
-        render(grils[selectedIndex].url);
-    };
+    const refresh = () => render(grils[selectedIndex].url);
 
     refreshBtn.addEventListener('click', refresh);
 
