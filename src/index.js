@@ -6,7 +6,7 @@ const grils = [
 ];
 
 async function fetchTweets() {
-    const res = await fetch('/api/tweets');
+    const res = await fetch('api/tweets');
     return await res.json();
 }
 
@@ -59,7 +59,10 @@ async function setup() {
         enable(refreshBtn);
     };
 
-    const refresh = () => render(grils[selectedIndex].url);
+    const refresh = () => {
+        selectedIndex = Math.floor(Math.random() * grils.length);
+        render(grils[selectedIndex].url);
+    };
 
     refreshBtn.addEventListener('click', refresh);
 
