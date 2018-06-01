@@ -21,7 +21,7 @@ export function renderContinously(canvas, tweets, draw) {
             list: tweets.map(({ user, retweets }) => [user.handle, clampRetweets(retweets)]),
             weightFactor: weightFunction(MIN_WEIGHT, MAX_WEIGHT),
             clearCanvas: false,
-            color: 'black'
+            color: 'red'
         }));
     });
 }
