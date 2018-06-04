@@ -12,9 +12,8 @@ const context = {
 };
 
 const hashtags = [
-    'beauty',
-    'attractive',
-    'fashion'
+    'metoo',
+    'scandal'
 ];
 
 const TIMEOUT = 60000; // 1 minute
