@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const { createServer } = require('http');
 const { fetchTweets } = require('./twitter');
-const { build } = require('./service-builder');
+const { build } = require('async-service-builder');
 const d = require('debug')('twitter-beautycloud');
 
 const app = express();
@@ -18,7 +18,7 @@ const hashtags = [
 
 const TIMEOUT = 60000; // 1 minute
 
-build(async() => {
+const service = build(async() => {
     d('Fetching new tweets');
     const tweets = await Promise.all(hashtags.map(fetchTweets));
 
@@ -35,11 +35,15 @@ app.use('/api/tweets', async(req, res) => {
 });
 
 const server = createServer(app);
+
 server.listen(process.env.PORT, () => {
     const { address, port } = server.address();
     console.log(`Listening on ${address}:${port}`)
 });
 
+service();
+
 process.on('unhandledRejection', err => {
     console.error('err', err);
+    process.exit(1);
 });

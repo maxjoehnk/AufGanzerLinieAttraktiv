@@ -16,6 +16,7 @@
     "parcel": "^1.8.1"
   },
   "dependencies": {
+    "async-service-builder": "^1.0.0",
     "debug": "^3.1.0",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
