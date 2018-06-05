@@ -3,7 +3,7 @@ let running = true;
 async function build(callback, interval = 5000) {
     while (running) {
         try {
-            callback();
+            await callback();
         }catch(err) {
             console.error(err);
         }
