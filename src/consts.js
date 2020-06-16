@@ -5,7 +5,7 @@ export const RETWEET_LOWER_BOUND = 0;
 export const RETWEET_UPPER_BOUND = 1000;
 
 export const MIN_WEIGHT = 10;
-export const MAX_WEIGHT = 30;
+export const MAX_WEIGHT = 20;
 
 export const FONT_WEIGHT = 'bold';
 
