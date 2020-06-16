@@ -2,11 +2,11 @@ import { renderWebGl } from './webgl-renderer';
 
 const grils = [
     
-	{ name: 'Harvey Weinstein', url: require('../assets/weinstein.jpg') },
-	{ name: 'European Parliament', url: require('../assets/euparl.jpg') },
-	{ name: 'Alexa', url: require('../assets/alexa.jpg') },
-	{ name: 'Hollywood', url: require('../assets/hollywood.jpg') }/*,
-	{ name: 'Carl Sargeant', url: require('../assets/carl_sargeant.jpg') },
+	{ name: 'Harvey Weinstein', url: require('../assets/weinstein.png') },
+	{ name: 'European Parliament', url: require('../assets/euparl.png') },
+	{ name: 'Alexa', url: require('../assets/alexa.png') },
+	{ name: 'Hollywood', url: require('../assets/hollywood.png') }/*,
+	{ name: 'Carl Sargeant', url: require('../assets/carl_sargeant.png') },
 	{ name: 'Danny Masterson', url: require('../assets/danny_masterson.png')},
 	{ name: 'Dieter Wedel', url: require('../assets/dieter_wedel.png')},
 	{ name: 'James Toback', url: require('../assets/james_toback.png')},*/
