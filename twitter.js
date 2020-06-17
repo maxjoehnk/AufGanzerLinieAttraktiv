@@ -11,7 +11,7 @@ async function fetchTweets(hashtag) {
     d('fetching tweets');
     const res = await twitter.get('search/tweets', {
         q: `#${hashtag}`,
-        count: 100,
+        count: 200,
         tweet_mode: 'extended'
     });
     d(res);

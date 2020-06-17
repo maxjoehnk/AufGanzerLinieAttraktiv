@@ -26,4 +26,5 @@ export const RENDER_OPTIONS = {
     minRotation: MIN_ROTATION,
     maxRotation: MAX_ROTATION,
     rotationSteps: ROTATION_STEPS
+    shape: 'square'
 }
