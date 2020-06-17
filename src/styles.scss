@@ -65,6 +65,7 @@ a, button {
     margin-bottom: 16px;
 
     a, button {
+        text-decoration: none
         @include gril-color('base');
         margin: 4px;
         border-bottom: 3px solid;
