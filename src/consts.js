@@ -25,6 +25,6 @@ export const RENDER_OPTIONS = {
     drawOutOfBound: DRAW_OUT_OF_BOUNDS,
     minRotation: MIN_ROTATION,
     maxRotation: MAX_ROTATION,
-    rotationSteps: ROTATION_STEPS
+    rotationSteps: ROTATION_STEPS,
     shape: 'square'
 }
