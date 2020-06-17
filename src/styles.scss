@@ -63,6 +63,26 @@ button {
 
 .grils {
     margin-bottom: 16px;
+    
+    a {
+    @include gril-color('base');
+        margin: 4px;
+        border-bottom: 3px solid;
+        padding: 8px 4px;
+
+        &[disabled] {
+            @include gril-color('disabled');
+        }
+
+        &.active {
+            @include gril-color('active');
+        }
+
+        &:not([disabled]):hover {
+            @include gril-color('hover');
+        }
+        
+    }
 
     button {
         @include gril-color('base');
