@@ -1,18 +1,5 @@
 import { renderWebGl } from './webgl-renderer';
-
-const grils = [
-    
-	{ name: 'Harvey Weinstein', url: require('../assets/weinstein.png') },
-	{ name: 'European Parliament', url: require('../assets/euparl.png') },
-	{ name: 'Alexa', url: require('../assets/alexa.png') },
-	{ name: 'Hollywood', url: require('../assets/hollywood.png') },/*
-	{ name: 'Carl Sargeant', url: require('../assets/carl_sargeant.png') },
-	{ name: 'Danny Masterson', url: require('../assets/danny_masterson.png')},
-	{ name: 'Dieter Wedel', url: require('../assets/dieter_wedel.png')},
-	{ name: 'James Toback', url: require('../assets/james_toback.png')},*/
-	{ name: 'Jörg Kachelmann', url: require('../assets/joerg_kachelmann.png')}
-	//{ name: 'Ron Jeremy', url: require('../assets/ron-jeremy.png')}
-];
+import { grils } from './grils';
 
 async function fetchTweets() {
     const res = await fetch('api/tweets');
@@ -29,15 +16,20 @@ function fetchImage(url) {
 }
 
 async function setup() {
-    const refreshBtn = document.querySelector('button');
+    const refreshBtn = document.getElementById('refresh-btn');
     const grilContainer = document.querySelector('.grils');
-    let selectedIndex = 0;
+    let tabQuery = /\?tab=([0-9]+)$/.exec(document.location);
+    if (tabQuery != null) {
+        grilContainer.classList.add('show');
+    }
+    let selectedIndex = tabQuery == null ? 0 : parseInt(tabQuery[1], 10);
 
     const grilBtns = grils.map((gril, i) => {
         const btn = document.createElement('button');
         btn.textContent = gril.name;
         btn.addEventListener('click', () => {
             selectedIndex = i;
+            history.pushState(null, gril.name, `/?tab=${i}`);
             render(gril.url);
         });
         grilContainer.appendChild(btn);

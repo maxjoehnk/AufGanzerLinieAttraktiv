@@ -1,5 +1,3 @@
-import { ALIASING_THRESHOLD } from './consts';
-
 export function clamp(min, max) {
     return value => Math.max(min, Math.min(max, value));
 }
@@ -22,7 +20,7 @@ export function bindVertices(gl) {
 
 export function getContext(canvas) {
     return canvas.getContext('webgl', {
-        antialias: false
+        antialias: true
     });
 }
 

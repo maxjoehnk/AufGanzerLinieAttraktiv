@@ -34,6 +34,12 @@ body {
     justify-content: flex-start;
 }
 
+.container {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+
 canvas {
     @include fade-container(2s);
     height: calc(100vh - 112px);
