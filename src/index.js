@@ -29,7 +29,6 @@ async function setup() {
         btn.textContent = gril.name;
         btn.addEventListener('click', () => {
             selectedIndex = i;
-            history.pushState(null, gril.name, `/?tab=${i}`);
             render(gril.url);
         });
         grilContainer.appendChild(btn);
