@@ -1,0 +1,17 @@
+version: '3'
+services:
+    beautycloud:
+        build: .
+        image: auf-ganzer-linie-attraktiv:latest
+        labels:
+            traefik.enable: "true"
+            traefik.http.middlewares.twitter-beautycloud-stripprefix.stripprefix.prefixes: /auf-ganzer-linie-attraktiv
+            traefik.http.routers.twitter-beautycloud.middlewares: twitter-beautycloud-stripprefix
+            traefik.http.routers.twitter-beautycloud.rule: Host(`projects.maxjoehnk.me`) && PathPrefix(`/auf-ganzer-linie-attraktiv`)
+        networks:
+          - web
+networks:
+    web:
+        external:
+            name: web
+
