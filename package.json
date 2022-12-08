@@ -19,7 +19,7 @@
     "async-service-builder": "^1.0.0",
     "debug": "^3.1.0",
     "dotenv": "^5.0.1",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "gl-shader": "^4.2.1",
     "gl-texture2d": "^2.1.0",
     "twitter": "^1.7.1",
